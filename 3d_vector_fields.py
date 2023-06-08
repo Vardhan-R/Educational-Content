@@ -38,7 +38,13 @@ sol_2 = -(b / a) ** 2 * x_mesh_2d / y_mesh_2d
 
 ax = plt.figure().add_subplot(projection="3d")
 
-ax.quiver(x_mesh, y_mesh, y_1_mesh, u, v, w, length=0.05, alpha=0.7)
+mag = np.sqrt(u ** 2 + v ** 2 + w ** 2)
+# u /= mag
+# v /= mag
+# w /= mag
+
+qq = ax.quiver(x_mesh, y_mesh, y_1_mesh, u, v, w, length=0.05, alpha=0.7, cmap=plt.cm.jet)
+# ax.colorbar(qq, cmap=plt.cm.jet)
 # ax.plot_surface(x_mesh_2d, y_mesh_2d, sol_1, edgecolor="red", lw=0.5, rstride=1, cstride=1, alpha=0.3)
 # ax.plot_surface(x_mesh_2d, y_mesh_2d, sol_2, edgecolor="royalblue", lw=0.5, rstride=1, cstride=1, alpha=0.3)
 # ax.plot_surface(y_mesh_2d_2, y_1_mesh_2d, sol_2, edgecolor="royalblue", lw=0.5, rstride=1, cstride=1, alpha=0.3)
