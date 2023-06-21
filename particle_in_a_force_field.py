@@ -23,8 +23,8 @@ class Particle:
 
     def update(self):
         self.acc = vect.Vector(2 * ((self.pos.y - height / 2) / 50) ** 3, 3 * ((self.pos.x - width / 2) / 50) ** 2)
-        self.vel = vect.add(self.vel, self.acc.mult(dt))
-        self.pos = vect.add(self.pos, self.vel.mult(dt))
+        self.vel = self.vel + self.acc * dt
+        self.pos = self.pos + self.vel * dt
 
 scrn = pygame.display.set_mode((width, height))
 
@@ -46,3 +46,5 @@ while running:
     pygame.display.update()
 
 pygame.quit()
+
+print(help(vect.Vector))
