@@ -2,11 +2,11 @@ import math, pygame, random
 
 pygame.init()
 
-gravity = 0.001
+gravity = 0.01
 wind = 0
 coefficient_of_restitution = 0.9
-width = 800
-height = 600
+width = 1400
+height = 800
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
@@ -16,17 +16,19 @@ all_balls = []
 running = True
 
 scrn = pygame.display.set_mode((width, height))
+bb = pygame.image.load(r"C:/Users/vrdhn/Desktop/clg/Tinkerers' Lab/basketball.png")
 
 
 
 class Ball:
     def __init__(self, px, py):
-        self.radius = 5
+        self.radius = 32
         self.pos_x = px
         self.pos_y = py
         self.vel_x = random.randint(-10, 10) / 10
         self.vel_y = math.sqrt(1 - self.vel_x ** 2)
-        self.clr = random.choice([red, green, blue, yellow, violet])
+        # self.clr = random.choice([red, green, blue, yellow, violet])
+        self.clr = (255, 128, 0)
 
     def update(self):
         self.vel_x += wind
@@ -49,7 +51,8 @@ class Ball:
             self.pos_y = height - self.radius - 1
 
     def show(self):
-        pygame.draw.circle(scrn, self.clr, (self.pos_x, self.pos_y), self.radius)
+        # pygame.draw.circle(scrn, self.clr, (self.pos_x, self.pos_y), self.radius)
+        scrn.blit(bb, (self.pos_x, self.pos_y))
 
 
 
